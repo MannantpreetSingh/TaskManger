@@ -17,7 +17,7 @@ if (isset($_POST['register'])) {
 }
 ?>
 
-<form method="POST">
+<form style="text-align:center;" method="POST">
     <h2>Register</h2>
     <input type="text" name="name" placeholder="Name" required><br><br>
     <input type="email" name="email" placeholder="Email" required><br><br>
