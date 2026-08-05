@@ -1,11 +1,20 @@
 <?php
 session_start();
+include("../config/db.php");
 if(!isset($_SESSION["user_id"])){
     header("location: ../auth/login.php" );
     exit();
 }
-
-echo "Welcome to Dashboard";
-
-
+$user_id = $_SESSION["user_id"];
+$sql = " SELECT * FROM tasks WHERE user_id ='$user_id'";
+$result = $conn->query($sql);
+?>
+<h2> Your Taks </h2>
+<a href = "../tasks/create_task.php ">
+    Add new tasks 
+</a>
+<?php
+while($row = $result->fetch_assoc()){
+    echo $row["title"]. "<br>";
+}
 ?>
