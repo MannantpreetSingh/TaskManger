@@ -1,9 +1,11 @@
 <?php
 session_start();
-if(!isset($_SESSION[""])){
-    header("location : /auth/login.php" );
+if(!isset($_SESSION["user_id"])){
+    header("location: ../auth/login.php" );
     exit();
 }
+
 echo "Welcome to Dashboard";
+
 
 ?>
