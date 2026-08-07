@@ -13,9 +13,10 @@ $result = $conn->query($sql);
 <h2> Your Taks </h2>
 <a href="../tasks/create_task.php ">
     Add new tasks
-</a>
+</a> <br><br>
 <?php
 while ($row = $result->fetch_assoc()) {
     echo $row['task'] . "<br>";
+    echo "<a href='../tasks/delete_task.php?id=" . $row['id'] . "'>Delete</a><br><br>";
 }
 ?>
