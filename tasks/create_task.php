@@ -1,5 +1,5 @@
 <?php
-session_start();    
+session_start();
 include("../config/db.php");
 
 if (!isset($_SESSION['user_id'])) {
@@ -13,7 +13,7 @@ if (isset($_POST["add_task"])) {
 
     if ($conn->query($sql)) {
         echo "task added";
-
+        
     } else {
         echo "error" . $conn->error;
     }
@@ -27,3 +27,5 @@ if (isset($_POST["add_task"])) {
     <button type="submit" name="add_task">Add</button>
 
 </form>
+<a href="../dashboard/index.php">📋 View Tasks</a>
+<br><br>

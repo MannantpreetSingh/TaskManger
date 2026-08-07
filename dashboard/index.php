@@ -1,3 +1,5 @@
+<a href="../auth/logout.php">🚪 Logout</a>
+<br><br>
 <?php
 session_start();
 include("../config/db.php");
@@ -6,7 +8,7 @@ if (!isset($_SESSION["user_id"])) {
     exit();
 }
 $user_id = $_SESSION["user_id"];
-echo "Logged in user_id: " . $user_id . "<br>";
+echo "Logged In";
 $sql = " SELECT* FROM tasks WHERE user_id ='$user_id'";
 $result = $conn->query($sql);
 ?>
