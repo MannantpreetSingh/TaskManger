@@ -19,6 +19,7 @@ $result = $conn->query($sql);
 <?php
 while ($row = $result->fetch_assoc()) {
     echo $row['task'] . "<br>";
+    echo " <a href='../tasks/edit_task.php?id=" . $row['id'] . "'>Edit</a><br>";
     echo "<a href='../tasks/delete_task.php?id=" . $row['id'] . "'>Delete</a><br><br>";
 }
 ?>
