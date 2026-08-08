@@ -9,7 +9,7 @@ if (!isset($_SESSION["user_id"])) {
 }
 $user_id = $_SESSION["user_id"];
 echo "Logged In";
-$sql = " SELECT* FROM tasks WHERE user_id ='$user_id'";
+$sql = "SELECT * FROM tasks WHERE user_id='$user_id'";
 $result = $conn->query($sql);
 ?>
 <h2> Your Taks </h2>
