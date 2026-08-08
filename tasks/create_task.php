@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../assets/style.css">
 <?php
 session_start();
 include("../config/db.php");
@@ -19,6 +20,7 @@ if (isset($_POST["add_task"])) {
     }
 }
 ?>
+<div class="contanier">
 <form method="POST">
     <h2>
         Add tasks
@@ -29,3 +31,4 @@ if (isset($_POST["add_task"])) {
 </form>
 <a href="../dashboard/index.php">📋 View Tasks</a>
 <br><br>
+</div>

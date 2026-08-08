@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../assets/style.css">
 <?php
 session_start();
 include("../config/db.php");
@@ -28,7 +29,7 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-
+<div class="container">
 <form method="POST" action="login.php">
     <h2>Login</h2>
 
@@ -38,3 +39,4 @@ if (isset($_POST['login'])) {
 
     <button type="submit" name="login">Login</button>
 </form>
+</div>

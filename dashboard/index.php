@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../assets/style.css"> 
 <a href="../auth/logout.php">🚪 Logout</a>
 <br><br>
 <?php
@@ -12,14 +13,24 @@ echo "Logged In";
 $sql = "SELECT * FROM tasks WHERE user_id='$user_id'";
 $result = $conn->query($sql);
 ?>
+<div class="container">
 <h2> Your Taks </h2>
 <a href="../tasks/create_task.php ">
     Add new tasks
 </a> <br><br>
+
 <?php
 while ($row = $result->fetch_assoc()) {
-    echo $row['task'] . "<br>";
-    echo " <a href='../tasks/edit_task.php?id=" . $row['id'] . "'>Edit</a><br>";
-    echo "<a href='../tasks/delete_task.php?id=" . $row['id'] . "'>Delete</a><br><br>";
+?>
+    <div class="task">
+        <?php echo $row['task']; ?>
+        <div class="actions">
+            <a href="../tasks/edit_task.php?id=<?php echo $row['id']; ?>">Edit</a>
+            <a href="../tasks/delete_task.php?id=<?php echo $row['id']; ?>">Delete</a>
+        </div>
+    </div>
+<?php
 }
 ?>
+
+</div>

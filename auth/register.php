@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../assets/style.css">
 <?php
 include("../config/db.php");
 
@@ -16,7 +17,7 @@ if (isset($_POST['register'])) {
     }
 }
 ?>
-
+<div class="contanier">
 <form method="POST">
     <h2>Register</h2>
     <input type="text" name="name" placeholder="Name" required><br><br>
@@ -25,3 +26,4 @@ if (isset($_POST['register'])) {
     <button type="submit" name="register">Register</button>
 </form>
 <a href="login.php">Login</a>
+</div>

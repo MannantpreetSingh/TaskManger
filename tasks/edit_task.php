@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../assets/style.css">
 <?php
 session_start();
 include("../config/db.php");
@@ -28,7 +29,7 @@ $id = intval($_GET['id']);
 $result = $conn->query("SELECT * FROM tasks WHERE id=$id");
 $task = $result->fetch_assoc();
 ?>
-
+<div class="container">
 <h2>Edit Task</h2>
 
 <form method="POST">
@@ -41,3 +42,4 @@ $task = $result->fetch_assoc();
 
     <button type="submit">Update</button>
 </form>
+</div>
