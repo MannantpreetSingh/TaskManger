@@ -15,11 +15,13 @@ if (isset($_POST['login'])) {
     if ($result && $result->num_rows > 0) {
 
         $user = $result->fetch_assoc();
+   
 
         if (password_verify($password, $user['PASSWORD'])) {
             $_SESSION['user_id'] = $user['id'];
-
-            header("Location: /Task_Manger/dashboard/index.php");
+          $_SESSION["username"] = $user["Name"] ?? $user["name"] ?? "";
+          echo "Username: " . $_SESSION["username"];
+            header("Location: ../dashboard/index.php");
             exit();
         } else {
             echo "wrong password";
