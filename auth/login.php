@@ -2,6 +2,7 @@
 <?php
 session_start();
 include("../config/db.php");
+ include("../includes/navbar.php");
 
 if (isset($_POST['login'])) {
 
