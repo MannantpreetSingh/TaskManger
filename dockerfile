@@ -1,7 +1,7 @@
-from php:8.2-apache
+FROM php:8.2-apache
 
-copy ./var/www/html/
+COPY . /var/www/html/
 
-run docker-php-ext-install mysqli
+RUN docker-php-ext-install mysqli
 
-run a2enmod rewrite
+RUN a2enmod rewrite
