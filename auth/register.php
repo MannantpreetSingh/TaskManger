@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../assets/style.css">
 <?php
- include("../includes/navbar.php");
+include("../includes/navbar.php");
 include("../config/db.php");
 
 if (isset($_POST['register'])) {
@@ -19,12 +19,12 @@ if (isset($_POST['register'])) {
 }
 ?>
 <div class="contanier">
-<form method="POST">
-    <h2>Register</h2>
-    <input type="text" name="name" placeholder="Name" required><br><br>
-    <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="password" name="password" placeholder="Password" required><br><br>
-    <button type="submit" name="register">Register</button>
-</form>
-<a href="login.php">Login</a>
+    <form method="POST">
+        <h2>Register</h2>
+        <input type="text" name="name" placeholder="Name" required><br><br>
+        <input type="email" name="email" placeholder="Email" required><br><br>
+        <input type="password" name="password" placeholder="Password" required><br><br>
+        <button type="submit" name="register">Register</button>
+    </form>
+    <a href="login.php">Login</a>
 </div>
