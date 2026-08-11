@@ -1,45 +1,84 @@
+```php
 <?php
+
 session_start();
+
 include("../config/db.php");
-include("../includes/navbar.php");
 
 if (isset($_POST['login'])) {
 
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
 
-    $sql = "SELECT * FROM users WHERE email='$email'";
-    $result = $conn->query($sql);
+    if (!$stmt) {
+        die("Query preparation failed: " . $conn->error);
+    }
+
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
 
     if ($result && $result->num_rows > 0) {
 
         $user = $result->fetch_assoc();
 
-
         if (password_verify($password, $user['PASSWORD'])) {
+
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION["username"] = $user["Name"] ?? $user["name"] ?? "";
-            echo "Username: " . $_SESSION["username"];
+            $_SESSION['username'] = $user['Name'] ?? $user['name'] ?? '';
+
             header("Location: ../dashboard/index.php");
             exit();
+
         } else {
-            echo "wrong password";
+
+            echo "Wrong password";
+
         }
 
     } else {
-        echo "user not found";
+
+        echo "User not found";
+
     }
+
+    $stmt->close();
 }
 ?>
+
 <link rel="stylesheet" href="../assets/style.css">
+
 <div class="container">
+
     <form method="POST" action="login.php">
+
         <h2>Login</h2>
 
-        <input type="email" name="email" placeholder="Email" required><br><br>
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+        >
 
-        <input type="password" name="password" placeholder="Password" required><br><br>
+        <br><br>
 
-        <button type="submit" name="login">Login</button>
+        <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit" name="login">
+            Login
+        </button>
+
     </form>
+
 </div>
+```

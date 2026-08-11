@@ -12,7 +12,7 @@ mysqli_ssl_set(
     $conn,
     null,
     null,
-    "/etc/secrets/ca.pem",
+   __DIR__ . "/../ca.pem",
     null,
     null
 );
