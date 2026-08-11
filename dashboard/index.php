@@ -1,8 +1,10 @@
+<?php
+session_start();   
+?>
 <link rel="stylesheet" href="../assets/style.css">
 <a href="../auth/logout.php">🚪 Logout</a>
 <br><br>
 <?php
-session_start();
 include("../config/db.php");
 include("../includes/navbar.php");
 if (!isset($_SESSION["user_id"])) {
