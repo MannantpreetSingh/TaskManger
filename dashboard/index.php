@@ -1,5 +1,9 @@
 <?php
-session_start();   
+session_start();
+if (!isset($_SESSION["user_id"])) {
+    header("location: ../auth/login.php");
+    exit();
+}
 ?>
 <link rel="stylesheet" href="../assets/style.css">
 <a href="../auth/logout.php">🚪 Logout</a>
@@ -7,10 +11,7 @@ session_start();
 <?php
 include("../config/db.php");
 include("../includes/navbar.php");
-if (!isset($_SESSION["user_id"])) {
-    header("location: ../auth/login.php");
-    exit();
-}
+
 $user_id = $_SESSION["user_id"];
 echo "Logged In";
 $sql = "SELECT * FROM tasks WHERE user_id='$user_id'";

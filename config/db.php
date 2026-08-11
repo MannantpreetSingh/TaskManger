@@ -1,11 +1,13 @@
 <?php
 
 $host = getenv("DB_HOST");
-$port = getenv("DB_PORT");
+$port = (int) getenv("DB_PORT");
 $user = getenv("DB_USER");
 $password = getenv("DB_PASSWORD");
 $database = getenv("DB_NAME");
+
 $conn = mysqli_init();
+
 mysqli_ssl_set(
     $conn,
     null,
@@ -14,6 +16,7 @@ mysqli_ssl_set(
     null,
     null
 );
+
 mysqli_real_connect(
     $conn,
     $host,
@@ -24,8 +27,8 @@ mysqli_real_connect(
     null,
     MYSQLI_CLIENT_SSL
 );
+
 if (!$conn) {
-    die("connection failed " . mysqli_connect_error());
-    
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>
