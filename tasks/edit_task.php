@@ -1,8 +1,7 @@
-<link rel="stylesheet" href="../assets/style.css">
 <?php
 session_start();
 include("../config/db.php");
- include("../includes/navbar.php");
+include("../includes/navbar.php");
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,17 +29,17 @@ $id = intval($_GET['id']);
 $result = $conn->query("SELECT * FROM tasks WHERE id=$id");
 $task = $result->fetch_assoc();
 ?>
+<link rel="stylesheet" href="../assets/style.css">
 <div class="container">
-<h2>Edit Task</h2>
+    <h2>Edit Task</h2>
 
-<form method="POST">
-    <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
+    <form method="POST">
+        <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
 
-    <input type="text" name="title"
-           value="<?php echo $task['task']; ?>" required>
+        <input type="text" name="title" value="<?php echo $task['task']; ?>" required>
 
-    <br><br>
+        <br><br>
 
-    <button type="submit">Update</button>
-</form>
+        <button type="submit">Update</button>
+    </form>
 </div>

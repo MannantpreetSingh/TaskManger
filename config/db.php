@@ -17,7 +17,7 @@ mysqli_ssl_set(
     null
 );
 
-mysqli_real_connect(
+if (!mysqli_real_connect(
     $conn,
     $host,
     $user,
@@ -26,9 +26,7 @@ mysqli_real_connect(
     $port,
     null,
     MYSQLI_CLIENT_SSL
-);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+)) {
+    die("Database connection failed: " . mysqli_connect_error());
 }
 ?>

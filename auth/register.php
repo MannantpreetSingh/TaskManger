@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../assets/style.css">
 <?php
 include("../includes/navbar.php");
 include("../config/db.php");
@@ -18,6 +17,7 @@ if (isset($_POST['register'])) {
     }
 }
 ?>
+<link rel="stylesheet" href="../assets/style.css">
 <div class="contanier">
     <form method="POST">
         <h2>Register</h2>
