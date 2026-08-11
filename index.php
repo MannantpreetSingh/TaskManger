@@ -1,6 +1,6 @@
 <?php
- include("includes/navbar.php"); 
 session_start();
+include("includes/navbar.php");
 
 ?>
 
