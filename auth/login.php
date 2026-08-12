@@ -1,4 +1,3 @@
-```php
 <?php
 
 session_start();
@@ -9,16 +8,9 @@ if (isset($_POST['login'])) {
 
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
 
-    if (!$stmt) {
-        die("Query preparation failed: " . $conn->error);
-    }
-
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
+    $sql = "SELECT * FROM users WHERE email='$email'";
+    $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
 
@@ -29,6 +21,7 @@ if (isset($_POST['login'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['Name'] ?? $user['name'] ?? '';
 
+            // Redirect without printing anything first
             header("Location: ../dashboard/index.php");
             exit();
 
@@ -43,8 +36,6 @@ if (isset($_POST['login'])) {
         echo "User not found";
 
     }
-
-    $stmt->close();
 }
 ?>
 
@@ -56,21 +47,11 @@ if (isset($_POST['login'])) {
 
         <h2>Login</h2>
 
-        <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-        >
+        <input type="email" name="email" placeholder="Email" required>
 
         <br><br>
 
-        <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-        >
+        <input type="password" name="password" placeholder="Password" required>
 
         <br><br>
 
@@ -81,4 +62,3 @@ if (isset($_POST['login'])) {
     </form>
 
 </div>
-```
