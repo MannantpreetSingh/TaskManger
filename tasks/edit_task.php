@@ -1,8 +1,6 @@
 <?php
 session_start();
 include("../config/db.php");
-include("../includes/navbar.php");
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -28,6 +26,8 @@ if (!isset($_GET['id'])) {
 $id = intval($_GET['id']);
 $result = $conn->query("SELECT * FROM tasks WHERE id=$id");
 $task = $result->fetch_assoc();
+include("../includes/navbar.php");
+
 ?>
 <link rel="stylesheet" href="../assets/style.css">
 <div class="container">
