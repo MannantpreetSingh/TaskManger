@@ -3,6 +3,10 @@
 session_start();
 
 include("../config/db.php");
+if (isset($_SESSION['success'])) {
+    $success = $_SESSION['success'];
+    unset($_SESSION['success']);
+}
 
 if (isset($_POST['login'])) {
 
